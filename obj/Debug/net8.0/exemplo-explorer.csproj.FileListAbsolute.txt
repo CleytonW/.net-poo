@@ -1,0 +1,14 @@
+C:\Users\013192534\Documents\development\exemplo-explorer\bin\Debug\net8.0\exemplo-explorer.exe
+C:\Users\013192534\Documents\development\exemplo-explorer\bin\Debug\net8.0\exemplo-explorer.deps.json
+C:\Users\013192534\Documents\development\exemplo-explorer\bin\Debug\net8.0\exemplo-explorer.runtimeconfig.json
+C:\Users\013192534\Documents\development\exemplo-explorer\bin\Debug\net8.0\exemplo-explorer.dll
+C:\Users\013192534\Documents\development\exemplo-explorer\bin\Debug\net8.0\exemplo-explorer.pdb
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.AssemblyInfoInputs.cache
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.AssemblyInfo.cs
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.csproj.CoreCompileInputs.cache
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.dll
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\refint\exemplo-explorer.dll
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.pdb
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.genruntimeconfig.cache
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\ref\exemplo-explorer.dll
