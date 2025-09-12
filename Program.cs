@@ -2,6 +2,67 @@
 using exemplo_explorer.Models;
 using System.Globalization;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
+
+int numero = 20;
+bool ehPar = false;
+
+//if ternario
+ehPar = numero % 2 == 0;
+
+Console.WriteLine($"O número {numero} é {(ehPar ? "par" : "ímpar")}");
+
+//if simples
+if (numero % 2 == 0)
+{
+    Console.WriteLine($"O número {numero} é par");
+}
+else
+{
+    Console.WriteLine($"O número {numero} não é par");
+}
+
+
+
+
+//Desconstructor
+Pessoa p1 = new Pessoa(nome: "Cleber", sobrenome: "Santos");
+
+(string nome, string sobrenome) = p1;
+
+Console.WriteLine($"{nome} {sobrenome}");
+
+
+//Tupla com método e descarte
+LeituraArquivo arquivo = new LeituraArquivo();
+
+var (sucesso, linhasArquivo, _) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+if (sucesso)
+{
+    Console.WriteLine($"Quantidade de linhas do arquivo: {quantidadeLinhas}");
+    foreach (var linha in linhasArquivo)
+    {
+        Console.WriteLine(linha);
+    }
+}
+else
+{
+    Console.WriteLine("Não foi possível ler o arquivo");
+}
+
+
+
+
+//Tupla
+(int Id, string Nome, string Sobrenome, decimal Altura) tupla = (1, "Cleber", "Santos", 1.69M);
+ValueTuple<int, string, string, decimal> outroExeploTupla = (2, "Ana", "Silva", 1.65M);
+var terceiroExemploTupla = Tuple.Create(3, "Maria", "Oliveira", 1.70M);
+
+Console.WriteLine($"ID: {tupla.Id}");
+Console.WriteLine($"Nome: {tupla.Nome}");
+Console.WriteLine($"Sobrenome: {tupla.Sobrenome}");
+Console.WriteLine($"Altura: {tupla.Altura}");
 
 //Dictionary
 Dictionary<string, string> estados = new Dictionary<string, string>();
@@ -42,16 +103,7 @@ else
 
 
 
-
-
-
-
-
-
-
-
-
-
+//------------------------------------------
 
 
 

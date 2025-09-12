@@ -12,3 +12,4 @@ C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\refin
 C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.pdb
 C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.genruntimeconfig.cache
 C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\ref\exemplo-explorer.dll
+C:\Users\013192534\Documents\development\exemplo-explorer\obj\Debug\net8.0\exemplo-explorer.sourcelink.json
