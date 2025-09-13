@@ -3,255 +3,285 @@ using exemplo_explorer.Models;
 using System.Globalization;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 
-int numero = 20;
-bool ehPar = false;
 
-//if ternario
-ehPar = numero % 2 == 0;
+//Deserialização
+string conteudoArquivo = File.ReadAllText("Arquivos/venda.json");
+List<Venda> listaVendas = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo)!;
 
-Console.WriteLine($"O número {numero} é {(ehPar ? "par" : "ímpar")}");
-
-//if simples
-if (numero % 2 == 0)
+foreach (Venda venda in listaVendas)
 {
-    Console.WriteLine($"O número {numero} é par");
-}
-else
-{
-    Console.WriteLine($"O número {numero} não é par");
+    Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}");
 }
 
 
 
+//Serialização
+// DateTime dataAtual = DateTime.Now;
+// List<Venda> listaVendas = new List<Venda>();
 
-//Desconstructor
-Pessoa p1 = new Pessoa(nome: "Cleber", sobrenome: "Santos");
+// Venda v1 = new Venda(1, "Notebook", 4500M, dataAtual);
+// Venda v2 = new Venda(2, "Mouse", 150M, dataAtual);
 
-(string nome, string sobrenome) = p1;
+// listaVendas.Add(v1);
+// listaVendas.Add(v2);
 
-Console.WriteLine($"{nome} {sobrenome}");
+// string serializado = JsonConvert.SerializeObject(listaVendas, Formatting.Indented);
 
+// File.WriteAllText("Arquivos/venda.json", serializado);
+// Console.WriteLine(serializado);
 
-//Tupla com método e descarte
-LeituraArquivo arquivo = new LeituraArquivo();
 
-var (sucesso, linhasArquivo, _) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
 
-if (sucesso)
-{
-    Console.WriteLine($"Quantidade de linhas do arquivo: {quantidadeLinhas}");
-    foreach (var linha in linhasArquivo)
-    {
-        Console.WriteLine(linha);
-    }
-}
-else
-{
-    Console.WriteLine("Não foi possível ler o arquivo");
-}
+// int numero = 20;
+// bool ehPar = false;
 
+// //if ternario
+// ehPar = numero % 2 == 0;
 
+// Console.WriteLine($"O número {numero} é {(ehPar ? "par" : "ímpar")}");
 
+// //if simples
+// if (numero % 2 == 0)
+// {
+//     Console.WriteLine($"O número {numero} é par");
+// }
+// else
+// {
+//     Console.WriteLine($"O número {numero} não é par");
+// }
 
-//Tupla
-(int Id, string Nome, string Sobrenome, decimal Altura) tupla = (1, "Cleber", "Santos", 1.69M);
-ValueTuple<int, string, string, decimal> outroExeploTupla = (2, "Ana", "Silva", 1.65M);
-var terceiroExemploTupla = Tuple.Create(3, "Maria", "Oliveira", 1.70M);
 
-Console.WriteLine($"ID: {tupla.Id}");
-Console.WriteLine($"Nome: {tupla.Nome}");
-Console.WriteLine($"Sobrenome: {tupla.Sobrenome}");
-Console.WriteLine($"Altura: {tupla.Altura}");
 
-//Dictionary
-Dictionary<string, string> estados = new Dictionary<string, string>();
 
+// //Desconstructor
+// Pessoa p1 = new Pessoa(nome: "Cleber", sobrenome: "Santos");
 
-estados.Add("PE", "Pernambuco");
-estados.Add("SP", "São Paulo");
-estados.Add("MG", "Minas Gerais");
+// (string nome, string sobrenome) = p1;
 
-Console.WriteLine(estados["PE"]);
+// Console.WriteLine($"{nome} {sobrenome}");
 
-foreach (var intem in estados)
-{
-    Console.WriteLine($"Chave: {intem.Key}, Valor: {intem.Value}");
-}
-Console.WriteLine("------------------");
 
-estados.Remove("MG");
-estados["SP"] = "São Paulo - Atualizado";
-foreach (var intem in estados)
-{
-    Console.WriteLine($"Chave: {intem.Key}, Valor: {intem.Value}");
-}
+// //Tupla com método e descarte
+// LeituraArquivo arquivo = new LeituraArquivo();
 
-Console.WriteLine("------------------");
+// var (sucesso, linhasArquivo, _) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
 
-string chave = "PE1";
-Console.WriteLine($"Verificando a chave {chave}");
-if (estados.ContainsKey(chave))
-{
-    Console.WriteLine($"Valor existente: {estados[chave]}");
-}
-else
-{
-    Console.WriteLine($"Chave {chave} não existe no dicionário");
-}
+// if (sucesso)
+// {
+//     Console.WriteLine($"Quantidade de linhas do arquivo: {quantidadeLinhas}");
+//     foreach (var linha in linhasArquivo)
+//     {
+//         Console.WriteLine(linha);
+//     }
+// }
+// else
+// {
+//     Console.WriteLine("Não foi possível ler o arquivo");
+// }
 
 
 
 
-//------------------------------------------
+// //Tupla
+// (int Id, string Nome, string Sobrenome, decimal Altura) tupla = (1, "Cleber", "Santos", 1.69M);
+// ValueTuple<int, string, string, decimal> outroExeploTupla = (2, "Ana", "Silva", 1.65M);
+// var terceiroExemploTupla = Tuple.Create(3, "Maria", "Oliveira", 1.70M);
 
+// Console.WriteLine($"ID: {tupla.Id}");
+// Console.WriteLine($"Nome: {tupla.Nome}");
+// Console.WriteLine($"Sobrenome: {tupla.Sobrenome}");
+// Console.WriteLine($"Altura: {tupla.Altura}");
 
+// //Dictionary
+// Dictionary<string, string> estados = new Dictionary<string, string>();
 
-//Pilha
-Stack<int> pilha = new Stack<int>();
 
-pilha.Push(4);
-pilha.Push(6);
-pilha.Push(8);
-pilha.Push(10);
+// estados.Add("PE", "Pernambuco");
+// estados.Add("SP", "São Paulo");
+// estados.Add("MG", "Minas Gerais");
 
-foreach (int item in pilha)
-{
-    Console.WriteLine(item);
-}
+// Console.WriteLine(estados["PE"]);
 
-Console.WriteLine($"Removendo o elemento do topo da pilha: {pilha.Pop()}");
+// foreach (var intem in estados)
+// {
+//     Console.WriteLine($"Chave: {intem.Key}, Valor: {intem.Value}");
+// }
+// Console.WriteLine("------------------");
 
-pilha.Push(12);
-foreach (int item in pilha)
-{
-    Console.WriteLine(item);
-}
+// estados.Remove("MG");
+// estados["SP"] = "São Paulo - Atualizado";
+// foreach (var intem in estados)
+// {
+//     Console.WriteLine($"Chave: {intem.Key}, Valor: {intem.Value}");
+// }
 
-Console.WriteLine($"Removendo o elemento do topo da pilha: {pilha.Pop()}");
+// Console.WriteLine("------------------");
 
+// string chave = "PE1";
+// Console.WriteLine($"Verificando a chave {chave}");
+// if (estados.ContainsKey(chave))
+// {
+//     Console.WriteLine($"Valor existente: {estados[chave]}");
+// }
+// else
+// {
+//     Console.WriteLine($"Chave {chave} não existe no dicionário");
+// }
 
 
 
 
+// //------------------------------------------
 
 
 
-//Fila
-Queue<int> fila = new Queue<int>();
+// //Pilha
+// Stack<int> pilha = new Stack<int>();
 
-fila.Enqueue(2);
-fila.Enqueue(4);
-fila.Enqueue(6);
-fila.Enqueue(8);
+// pilha.Push(4);
+// pilha.Push(6);
+// pilha.Push(8);
+// pilha.Push(10);
 
-foreach (int item in fila)
-{
-    Console.WriteLine(item);
-}
+// foreach (int item in pilha)
+// {
+//     Console.WriteLine(item);
+// }
 
-Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
-fila.Enqueue(10);
-Console.WriteLine($"Adicionando elemento: 10");
+// Console.WriteLine($"Removendo o elemento do topo da pilha: {pilha.Pop()}");
 
-foreach (int item in fila)
-{
-    Console.WriteLine(item);
-}
+// pilha.Push(12);
+// foreach (int item in pilha)
+// {
+//     Console.WriteLine(item);
+// }
 
-Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
+// Console.WriteLine($"Removendo o elemento do topo da pilha: {pilha.Pop()}");
 
 
 
 
-//Exceções
-new ExemploExcecao().Metodo1();
 
 
 
 
-//Leitura de arquivo com tratamento de exceções
-try
-{
-    string[] linhas = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
+// //Fila
+// Queue<int> fila = new Queue<int>();
 
-    foreach (string linha in linhas)
-    {
-        Console.WriteLine(linha);
+// fila.Enqueue(2);
+// fila.Enqueue(4);
+// fila.Enqueue(6);
+// fila.Enqueue(8);
 
-    }
-}
-catch (FileNotFoundException ex)
-{
-    Console.WriteLine($"Ocorreu uma exceção do tipo FileNotFoundException. {ex.Message}");
-}
-catch (DirectoryNotFoundException ex)
-{
-    Console.WriteLine($"Ocorreu uma exceção do tipo DirectoryNotFoundException. {ex.Message}");
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Ocorreu uma exceção genérica. {ex.Message}");
-}
-finally
-{
-    Console.WriteLine("Chegou ao fim do programa");
-}
+// foreach (int item in fila)
+// {
+//     Console.WriteLine(item);
+// }
 
+// Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
+// fila.Enqueue(10);
+// Console.WriteLine($"Adicionando elemento: 10");
 
+// foreach (int item in fila)
+// {
+//     Console.WriteLine(item);
+// }
 
+// Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
 
 
 
-// Conversão de data com tratamento de exceção
-string dataString = "2022-00-17 18:00";
 
-bool sucesso = DateTime.TryParseExact(dataString, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data);
+// //Exceções
+// new ExemploExcecao().Metodo1();
 
-if (!sucesso)
-{
-    Console.WriteLine("Não foi possível converter a data");
-    return;
-}
-else
-{
-    Console.WriteLine($"Conversão realizada com sucesso. Data: {data}");
-}
 
-Console.WriteLine(data);
 
 
+// //Leitura de arquivo com tratamento de exceções
+// try
+// {
+//     string[] linhas = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
 
+//     foreach (string linha in linhas)
+//     {
+//         Console.WriteLine(linha);
 
+//     }
+// }
+// catch (FileNotFoundException ex)
+// {
+//     Console.WriteLine($"Ocorreu uma exceção do tipo FileNotFoundException. {ex.Message}");
+// }
+// catch (DirectoryNotFoundException ex)
+// {
+//     Console.WriteLine($"Ocorreu uma exceção do tipo DirectoryNotFoundException. {ex.Message}");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine($"Ocorreu uma exceção genérica. {ex.Message}");
+// }
+// finally
+// {
+//     Console.WriteLine("Chegou ao fim do programa");
+// }
 
 
 
 
 
 
-// Formatação de números
-CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+// // Conversão de data com tratamento de exceção
+// string dataString = "2022-00-17 18:00";
 
-decimal valorMonetario = 82029.40M;
+// bool sucesso = DateTime.TryParseExact(dataString, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data);
 
-Console.WriteLine($"{valorMonetario.ToString("C2")}");
+// if (!sucesso)
+// {
+//     Console.WriteLine("Não foi possível converter a data");
+//     return;
+// }
+// else
+// {
+//     Console.WriteLine($"Conversão realizada com sucesso. Data: {data}");
+// }
 
-double porcentagem = .3421;
+// Console.WriteLine(data);
 
-Console.WriteLine($"{porcentagem.ToString("P2")}");
 
 
-int numero = 123456789;
-Console.WriteLine($"{numero.ToString("##-##-##-##-##")}");
 
-//Classes e objetos
-Pessoa p1 = new Pessoa(nome:"Cleber", sobrenome:"Santos");
-Pessoa p2 = new Pessoa(nome:"Ana", sobrenome:"Silva");
 
-Curso cursoDeIngles = new Curso();
-cursoDeIngles.Nome = "Inglês";
-cursoDeIngles.Alunos = new List<Pessoa>();
 
-cursoDeIngles.AdicionarAluno(p1);
-cursoDeIngles.AdicionarAluno(p2);
-cursoDeIngles.ListarAlunos();
+
+
+
+
+// // Formatação de números
+// CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+// decimal valorMonetario = 82029.40M;
+
+// Console.WriteLine($"{valorMonetario.ToString("C2")}");
+
+// double porcentagem = .3421;
+
+// Console.WriteLine($"{porcentagem.ToString("P2")}");
+
+
+// int numero = 123456789;
+// Console.WriteLine($"{numero.ToString("##-##-##-##-##")}");
+
+// //Classes e objetos
+// Pessoa p1 = new Pessoa(nome:"Cleber", sobrenome:"Santos");
+// Pessoa p2 = new Pessoa(nome:"Ana", sobrenome:"Silva");
+
+// Curso cursoDeIngles = new Curso();
+// cursoDeIngles.Nome = "Inglês";
+// cursoDeIngles.Alunos = new List<Pessoa>();
+
+// cursoDeIngles.AdicionarAluno(p1);
+// cursoDeIngles.AdicionarAluno(p2);
+// cursoDeIngles.ListarAlunos();
